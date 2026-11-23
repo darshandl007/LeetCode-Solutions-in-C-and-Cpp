@@ -1,20 +1,20 @@
 int maxSubArray(int* nums, int numsSize) {
-   int  sum=0;
-    int maximum_sum=INT_MIN;
+    int left=0;
+    int max=INT_MIN;
+    int sum=0;
+    int maxi(int high,int low)
+    {
+        return high > low ? high : low; 
+    }
     
     for(int i=0;i<numsSize;i++)
     {
-        sum=sum+nums[i];
-     if(sum > maximum_sum)
-        {
-            maximum_sum=sum;
-        }
-        
-           if(sum<0)
-        {
-            sum=0;
-             
-        }
+         sum=maxi(nums[i],sum+nums[i]);
+       if( sum > max)
+       {
+         max=sum;
+       }
     }
-    return maximum_sum;
+    return max;
+       
 }
