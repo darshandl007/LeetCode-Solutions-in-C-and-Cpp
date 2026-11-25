@@ -1,29 +1,23 @@
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
+         vector<int> arr;
 
-        int numsSize = nums.size();
-        vector<int>arr;
+         int hash[100001]={0};
 
-    vector<int> hash(numsSize + 1, 0);
-   
-    for(int i=0;i<numsSize;i++)
-    {
-       
-        
-        if(hash[nums[i]] == 1)
-        {
-            arr.push_back(nums[i]);
+         for(int i=0;i<nums.size();i++)\
+         {
+            hash[nums[i]]++;
+         }
 
-        }else
-        {
-                hash[nums[i]]=1;
-        }
-        
-        
-    }
-  
-    return arr;
-        
+         int size=0;
+         for(int i=0;i<100001;i++)
+         {
+            if(hash[i] > 1)
+            {
+                arr.push_back(i);
+            }
+         }
+        return arr;
     }
 };
